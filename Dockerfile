@@ -3,10 +3,9 @@ FROM ubuntu:latest
 
 RUN apt-get update \
   && apt-get install -y wget git golang \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN git clone https://github.com/anynines/a9s-go-example.git
-RUN CMD PORT=3000 go run a9s-go-example/server.go
+  && rm -rf /var/lib/apt/lists/* \
+  && git clone https://github.com/anynines/a9s-go-example.git \
+  && CMD PORT=3000 go run a9s-go-example/server.go
 
 RUN wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.28-linux-amd64 \
   && chmod 755 bosh-cli-2.0.28-linux-amd64 \
